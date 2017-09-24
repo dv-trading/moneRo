@@ -100,9 +100,7 @@ getBlockTemplate <- function(wallet.address, reserve.size=60,
 
 #' getBlock
 #'
-#' Full block information can be retrieved by either block height or hash,
-#' like with the above block header calls. For full block information, both
-#' lookups use the same method, but with different input parameters.
+#' Full block information can be retrieved by either block height or hash. 
 #'
 #' Provide either the \code{height} parameter or \code{hash} parameter, but
 #' not both.
@@ -178,9 +176,6 @@ getBlockTemplate <- function(wallet.address, reserve.size=60,
 #' @export
 getBlock <- function(height, hash, ip=getOption("monerod.ip", "127.0.0.1"),
                      port=getOption("monerod.port", 18081)) {
-  #if (missing(height)) {
-  #  params <- RJSONIO::toJSON(list(hash=hash))
-  #} else params <- RJSONIO::toJSON(list(height=height))
   params <- if (missing(height)) {
     list(hash=hash)
   } else list(height=as.integer(height))
@@ -191,6 +186,10 @@ getBlock <- function(height, hash, ip=getOption("monerod.ip", "127.0.0.1"),
 #' getConnections
 #'
 #' Retrieve information about incoming and outgoing connections to your node.
+#'
+#' You may need to `Sys.setlocale('LC_ALL','C')` before running this function
+#' because often the data returned contains a string that is not valid in all
+#' locales.
 #'
 #' @param ip daemon ip address
 #' @param port daemon port
@@ -220,7 +219,12 @@ getBlock <- function(height, hash, ip=getOption("monerod.ip", "127.0.0.1"),
 #' @export
 getConnections <- function(ip=getOption("monerod.ip", "127.0.0.1"),
                            port=getOption("monerod.port", 18081)) {
-  monerod(method="get_connections", ip=ip, port=port)$result
+  res <- try(suppressWarnings(monerod(method="get_connections", ip=ip, 
+                                      port=port)$result), silent=TRUE)
+  if (inherits(res, "try-error")) {
+    stop("Try running Sys.setlocale('LC_ALL','C') first and then try again.")
+  }
+  res
 }
 
 #' getInfo
@@ -369,6 +373,8 @@ getTransactions <- function(txs.hashes=list(), decode.as.json=TRUE,
 
 #' getTransactionPool
 #' 
+#' @param ip daemon ip address
+#' @param port daemon port
 #' @return
 #' \itemize{
 #'   \item spent_key_images - List of spent output key images:

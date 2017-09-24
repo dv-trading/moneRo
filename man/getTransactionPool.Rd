@@ -4,7 +4,13 @@
 \alias{getTransactionPool}
 \title{getTransactionPool}
 \usage{
-getTransactionPool()
+getTransactionPool(ip = getOption("monerod.ip", "127.0.0.1"),
+  port = getOption("monerod.port", "18081"))
+}
+\arguments{
+\item{ip}{daemon ip address}
+
+\item{port}{daemon port}
 }
 \value{
 \itemize{

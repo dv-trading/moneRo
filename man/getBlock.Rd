@@ -65,9 +65,7 @@ getBlock(height, hash, ip = getOption("monerod.ip", "127.0.0.1"),
 }
 }
 \description{
-Full block information can be retrieved by either block height or hash,
-like with the above block header calls. For full block information, both
-lookups use the same method, but with different input parameters.
+Full block information can be retrieved by either block height or hash.
 }
 \details{
 Provide either the \code{height} parameter or \code{hash} parameter, but

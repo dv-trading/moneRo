@@ -36,6 +36,11 @@ connections - List of all connections and their info
 \description{
 Retrieve information about incoming and outgoing connections to your node.
 }
+\details{
+You may need to `Sys.setlocale('LC_ALL','C')` before running this function
+because often the data returned contains a string that is not valid in all
+locales.
+}
 \references{
 \url{https://getmonero.org/knowledge-base/developer-guides/daemon-rpc#getconnections}
 }
