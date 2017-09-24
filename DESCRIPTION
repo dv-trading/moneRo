@@ -1,0 +1,14 @@
+Package: moneRo
+Title: An R API to the monero daemon and wallet
+Version: 0.0.1
+Authors@R: person("Garrett", "See", email = "gsee@dvchain.co", role = c("aut", "cre"))
+Description: moneRo provides and R API to the monero daemon and wallet.
+    Visit \url{https://getmonero.org/downloads} to download the monero software.
+Depends:
+    R (>= 3.2.2)
+Imports:
+    RCurl,
+    RJSONIO
+License: file LICENSE
+LazyData: true
+RoxygenNote: 6.0.1
