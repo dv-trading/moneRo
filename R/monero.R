@@ -412,8 +412,9 @@ getTransactions <- function(txs.hashes=list(), decode.as.json=TRUE,
 #'  }
 #' @author Garrett See
 #' @export
-getTransactionPool <- function() {
-  monerod(method="", interface="get_transaction_pool", ip="xmr.dvchain.co")
+getTransactionPool <- function(ip=getOption("monerod.ip", "127.0.0.1"),
+                               port=getOption("monerod.port", "18081")) {
+  monerod(method="", interface="get_transaction_pool", ip=ip, port=port)
 }
 
 
