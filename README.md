@@ -1,7 +1,7 @@
 # moneRo
 
 This package provides an R interface to the monero daemon and wallet RPC APIs.  
-Not all RPC calls have been implemented yet, especially on the wallet side.  
+Not all RPC methods have been implemented yet, especially on the wallet side.  
 Pull requests are welcome.
 
 To download monero or to learn more about it, visit https://getmonero.org.
