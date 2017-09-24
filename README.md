@@ -11,7 +11,7 @@ To download monero or to learn more about it, visit https://getmonero.org.
 ```
 # install.packages("devtools")
 library(devtools)
-install_github("gsee/moneRo")
+install_github("dv-trading/moneRo")
 ```
 
 ## Examples
