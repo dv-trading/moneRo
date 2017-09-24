@@ -1,7 +1,4 @@
----
-title: "moneRo"
-output: github_document
----
+# moneRo
 
 This package provides an R interface to the monero daemon and wallet RPC APIs.  
 Not all RPC calls have been implemented yet, especially on the wallet side.  
